@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SOSMED</title>
+    <!-- Tautan ke Font Awesome CSS dan file CSS Anda -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <h1>Sosial Media</h1>
+    <div class="back-to-home">
+  <a href="index.html">
+    <i class="fas fa-home icon-corner"></i>
+    </a>
+</div>
+
+<div id="clock" class="clock" onclick="playAudio()">
+  00:00:00
+</div>
+
+<audio id="audio" autoplay>
+  <source src="backsound.mp3" type="audio/mpeg">
+</audio>
+
+<div class="download-icon">
+             <a href="download.html" class="download-link"><i class="fas fa-cloud-download-alt"></i>
+             </a>
+             </div>
+
+    <div class="social-media">
+        <a href="https://www.facebook.com/paulchristii" target="_blank" id="facebook-link">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://twitter.com/paul's" target="_blank" id="twitter-link">
+            <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="https://www.instagram.com/initiaann_0705" target="_blank" id="instagram-link">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.github.com/dreamliner21" target="_blank" id="github-link"><i class="fab fa-github fa-github"></i> GitHub</a>
+        <a href="https://www.tiktok.com/@paulchristi21" target="_blank" id="tiktok-link"><i class="fab fa-tiktok fa-tiktok"></i> TikTok</a>
+    </div>
+    
+    <script>
+        // Menambahkan event listener untuk tautan sosial media
+        document.getElementById("facebook-link").addEventListener("click", function(event) {
+            event.preventDefault(); // Menghentikan tindakan default tautan
+            window.open(this.href, '_blank'); // Membuka tautan dalam tab baru
+        });
+
+        document.getElementById("twitter-link").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.open(this.href, '_blank');
+        });
+
+        document.getElementById("instagram-link").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.open(this.href, '_blank');
+        });
+        document.getElementById("github-link").addEventListener("click", function(event) {
+          event.preventDefault();
+          window.open(this.href, '_blank');
+        });
+        
+        function updateClock() {
+  const clockElement = document.getElementById("clock");
+  const currentTime = new Date();
+  const hours = currentTime.getHours().toString().padStart(2, "0");
+  const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+  const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  clockElement.textContent = timeString;
+}
+
+// Panggil fungsi updateClock setiap detik (1000 milidetik)
+setInterval(updateClock, 1000);
+
+// Panggil fungsi updateClock untuk menampilkan waktu saat halaman dimuat
+updateClock();
+
+function playAudio() {
+  const audio = document.getElementById("audio");
+  if (audio.paused) {
+    audio.play(); // Memainkan audio jika sedang tidak diputar
+  } else {
+    audio.pause(); // Memberhentikan audio jika sedang diputar
+  }
+}
+    </script>
+</body>
+</html>

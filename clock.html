@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOCK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+    @font-face {
+  font-family: 'DS-DIGIB';
+  src: url('DS-DIGIB.TTF') format('truetype'); /* Sesuaikan lokasi1 dan format font */
+}
+body {
+  background-color: #899;
+}
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  14% {
+    color: orange;
+  }
+  28% {
+    color: yellow;
+  }
+  42% {
+    color: green;
+  }
+  57% {
+    color: blue;
+  }
+  71% {
+    color: indigo;
+  }
+  85% {
+    color: violet;
+  }
+  100% {
+    color: red;
+  }
+}
+.clock {
+  position: fixed;
+  top: 50%; /* Posisi vertikal di tengah halaman */
+  left: 50%; /* Posisi horizontal di tengah halaman */
+  transform: translate(-50%, -50%); /* Untuk menggeser elemen agar berada di tengah */
+  font-size: 85px;
+  color: white;
+  font-family: "DS-DIGIB", sans-serif; /* Sesuaikan jenis font yang sesuai */
+  z-index: 9999;
+  animation: colorChange 10s linear infinite;
+  background: rgba(0, 0, 0, 0.3); /* Latar belakang hitam dengan opasitas 0.5 */
+  border-radius: 5px; /* Sudut elemen */
+  padding: 10px; /* Sesuaikan padding sesuai kebutuhan */
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px); /* Efek blur untuk latar belakang */
+}
+</style>
+</head>
+<body>
+  <h1></h1>
+  <div id="clock" class="clock" onclick="playAudio()">
+  00:00:00
+</div>
+
+<audio id="audio" autoplay>
+  <source src="backsound.mp3" type="audio/mpeg">
+</audio>
+  <script>
+    function updateClock() {
+  const clockElement = document.getElementById("clock");
+  const currentTime = new Date();
+  const hours = currentTime.getHours().toString().padStart(2, "0");
+  const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+  const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  clockElement.textContent = timeString;
+}
+
+// Panggil fungsi updateClock setiap detik (1000 milidetik)
+setInterval(updateClock, 1000);
+
+// Panggil fungsi updateClock untuk menampilkan waktu saat halaman dimuat
+updateClock();
+
+function playAudio() {
+  const audio = document.getElementById("audio");
+  if (audio.paused) {
+    audio.play(); // Memainkan audio jika sedang tidak diputar
+  } else {
+    audio.pause(); // Memberhentikan audio jika sedang diputar
+  }
+}
+  </script>
+</body>
+</html>

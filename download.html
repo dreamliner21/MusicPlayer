@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDUH MUSIC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+    @font-face {
+  font-family: 'DS-DIGIB';
+  src: url('DS-DIGIB.TTF') format('truetype'); /* Sesuaikan lokasi dan format font */
+}
+    body {
+      color: white;
+      /* background-image: url('https://images.unsplash.com/photo-1693733432132-d7296bfd4110?ixlib=rb-4.0.3&q=85&fm=png&crop=entropy&cs=srgb&dl=jigar-panchal-a7LqjWMPGoQ-unsplash.png'); */
+     /* background-color: #000; */
+     background-image: url('/bb2122.png');
+      height: 100vh;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    
+    /* Gaya untuk popup */
+.uppopup {display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+}
+
+.uppopup-content {
+    position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+   border-radius: 10px;
+}
+
+#dont-show-again-button, #close-button {
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    background-color: transparent;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    margin: 0;
+}
+
+#dont-show-again-button:hover, #close-button:hover {
+    background-color: transparent;
+}
+    
+    .popup {
+            /* Gaya CSS untuk pop-up */
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+        }
+        
+        .popup-content {
+            /* Gaya CSS untuk konten pop-up */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .close-button {
+            /* Gaya CSS untuk tombol "X" */
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #000;
+            opacity: 0.9;
+        }
+        h2 {
+          color: black;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        .popup p {
+          color: black;
+        }
+        /* Gaya ikon email di dalam popup */
+.popup-content i.fas.fa-envelope {
+    color: black; /* Mengubah warna ikon email menjadi merah */
+    font-size: 25px; /* Mengubah ukuran ikon email */
+}
+
+/* Gaya teks tautan email di dalam popup */
+.popup-content a {
+    color: blue; /* Mengubah warna tautan email (contoh: biru) */
+    font-size: 16px; /* Mengubah ukuran teks tautan email */
+    text-decoration: none; /* Menghilangkan garis bawah dari tautan */
+}
+        body.popup-open {
+    overflow: hidden;
+}
+
+/* Gaya popup */
+.infor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.infor-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(245, 245, 245, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.infor-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+}
+h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.info-content p{
+  color: white;
+  font-size: 15px;
+  font-weight: italic;
+}
+
+.fa-info-circle {
+  position: fixed;
+  top: 35px;
+  right: 10px;
+}
+.info-corner {
+  text-decoration: none;
+    color: #fff;
+    opacity: 0.4;
+    font-size: 14px;
+}
+        
+#play-pause-button {
+    position: fixed;
+    top: 85px; /* Ubah sesuai kebutuhan */
+    right: 10px; /* Ubah sesuai kebutuhan */
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+#play-pause-icon {
+    font-size: 14px; /* Ubah sesuai ukuran ikon yang Anda inginkan */
+    color: #fff;
+    opacity: 0.4;
+}
+
+    h1 {
+    color: white;
+    align-items: center;
+    font-size: 25px;
+    padding: 8px;
+    margin: 8px;
+    max-width: 10em;
+    box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(0.2em);
+}
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  14% {
+    color: orange;
+  }
+  28% {
+    color: yellow;
+  }
+  42% {
+    color: green;
+  }
+  57% {
+    color: blue;
+  }
+  71% {
+    color: indigo;
+  }
+  85% {
+    color: violet;
+  }
+  100% {
+    color: red;
+  }
+}
+.clock {
+  top: 60px; /* Ubah sesuai kebutuhan */
+  left: 10px; /* Ubah sesuai kebutuhan */
+  font-size: 20px;
+  color: white;
+  font-family: "DS-DIGIB", Sans-Serif; /* Pilih jenis font yang sesuai */
+  z-index: 9999;
+  align-items: center;
+  animation: colorChange 10s linear infinite;
+}
+    
+    .back-to-home {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.icon-corner {
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.4;
+    font-size: 14px;
+}
+
+.sosmed-icon {
+    position: fixed;
+    top: 55px;
+    right: 10px;
+}
+.sosmed-link {
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.4;
+    font-size: 14px;
+}
+
+/* Gaya iklan dan posisi tengah */
+#ad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+}
+
+.ad {
+    text-align: center;
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    max-width: 90%; /* Menyesuaikan lebar iklan */
+}
+
+.ad img {
+    width: 100%; /* Mengisi lebar konten iklan */
+    max-height: 50vh; /* Menyesuaikan tinggi iklan */
+    object-fit: contain;
+}
+
+.ad-caption {
+    font-size: 15px;
+    color: #fff;
+    margin: 5px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #000;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.close-button:hover {
+    color: #555; /* Warna saat tombol dihover */
+    opacity: 1;
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 33.33%;
+    text-align: center;
+    margin: 25px;
+}
+
+.thumbnail a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+.thumbnail img {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+.thumbnail p {
+    margin: 2px 0;
+    font-weight: bold;
+    font-size: 10px;
+}
+</style>
+</head>
+<body>
+  <h1 onclick="arahkanKeHalamanLain()">Unduh Musik</h1>
+<div id="clock" class="clock" onclick="arahkanKeHalamanClock()">
+  00:00:00
+</div>
+  
+    <div class="back-to-home">
+  <a href="index.html">
+    <i class="fas fa-home icon-corner"></i>
+    </a>
+</div>
+<div class="back-to-home">
+    <div class="icon-corner">
+        <a href="index.html">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+    <div class="info-corner">
+        <i class="fas fa-info-circle" onclick="showInfoPopup()"></i>
+    </div>
+</div>
+
+<div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup()">X</span> <!-- Tombol "X" untuk menutup pop-up -->
+            <h2>SELAMAT DATANG</h2>
+            <p>Web ini memiliki backsound yang dapat diputar dengan menekan simbol "▶". Pastikan anda telah mengatur volume pada perangkat yang digunakan. Bila ada saran, silahkan klik icon email dibawah ini↓.</p>
+            <!-- Tambahkan ikon email dengan tautan "mailto" -->
+        <p><a href="mailto:dreamliner.contact@gmail.com"><i class="fas fa-envelope"></i></a></p>
+        </div>
+    </div>
+    
+<div class="infor" id="info-popup">
+    <div class="infor-content">
+        <span class="info-close" onclick="closeInfoPopup()">&times;</span> 
+        <i class="fas fa-info-circle" onclick="showInfoPopup()"></i><!-- Tombol "X" untuk menutup popup -->
+        <h3>INFORMASI+++</h3>
+        <p>Web ini dibuat untuk mempermudah pengguna untuk mengunduh musik yang diinginkan. Maaf apabila kami hanya menyediakan file mp3 saja.</p> <!-- Isi popup -->
+    </div>
+</div>
+
+<div id="ad-container" style="display: none;">
+    <div class="ad">
+        <span class="close-button" onclick="closeAd()">X</span> <!-- Tombol "X" untuk menutup pop-up -->
+        <a href="" target="_blank">
+            <img src="ads.png" alt="Advertisement">
+        </a>
+        <p class="ad-caption">Advertisement</p>
+    </div>
+</div>
+
+            <div class="sosmed-icon">
+               <a href="sosmed.html" class="sosmed-link"><i class="fa-regular fa-user"></i></a>
+             </div>
+    
+    <audio id="audio" autoplay loop>
+        <source src="backsound.mp3" type="audio/mpeg">
+    </audio>
+    
+    <button id="play-pause-button" onclick="togglePlayPause()">
+        <i id="play-pause-icon" class="fas fa-play"></i>
+    </button>
+    
+<div class="thumbnail-container">
+  <div class="thumbnail">
+    <img src="images/bubrah.png" alt="">
+    <p><a href="https://we.tl/t-SNNYGJIlgx">BUBRAH (FEAT. AGIFF)</a></p>
+  </div>
+
+  <div class="thumbnail">
+    <img src="images/dumes.png" alt="">
+    <p><a href="https://download1500.mediafire.com/f8uapva1jxxgKfAnodY1ArEylXdFRAPW65C4etPYgRU1SBgv2XeRdOJGbBmVd25ySY3VFR6-iPz8y_NaHVvqZcK59TQfpqIkBp_hToDKcdgfgXn8-ABzg8Cb6fVIayoF6xUtSenif7A_LUIOrfG2exdpJZehXL7l6hBYmZzpMp6a/rvldsfh4c6devaz/Dumes-Woro+Widowati.mp3">DUMES-COVER WORO WIDOWATI</a></p>
+  </div>
+
+  <div class="thumbnail">
+    <img src="images/orangemisbali.png" alt="">
+    <p><a href="https://download1072.mediafire.com/wrbnchmh09vgufTfr1VzaY5i06b5o0X9TuzGlMgGMGc9H3J3itSu-TdA6Ipv3d_Jbzk0w5iX8IZmo9CPTGlGpcU7rL9zbFIcnzvOoS2GvrgKdXG2QRR_bbA-hVzCnQjHOH4XfeNVFLXNeYQUf1ZTfQwlFeuew2BuLuhRUlicbcd3/iboxj6zaqb80l1f/XALUNA-ORA+NGEMIS+BALI+Official+Video+Clip.mp3">XALUNA-ORA NGEMIS BALI</a></p>
+  </div>
+
+  <div class="thumbnail">
+    <img src="images/akuikhlas.png" alt="">
+    <p><a href="https://download1638.mediafire.com/urh6se4o4ufg1gRG77KadrL2BcR1WbfxFsiVY0cEOM55WNFxNjY1bDbo6HWrc3cDnslLYr_tJT3C6RpbTIuR2Yp74cYRLvI5OLq3pbfo7euoOekUkEn78WtRpAATHtOaMrXvgRSzET2osMYyZP8-uEshXcJ0iL2fynDavj4QBl6e/7yk1rgebge9juvn/Aku+Ikhlas-Aftershine.mp3">Aku ikhlas-Aftershine</a></p>
+  </div>
+
+  <div class="thumbnail">
+    <img src="images/critomustahil.png" alt="">
+    <p><a href="https://download848.mediafire.com/c846otqirs0gDouk-d6qcZJGa_ce2xE9OqCGWX2-CHM6rvMmVcIAfiaVS0u27N6tW4lBH_BErtwOeMSz5I4KRuApJgh4hKBPo46Ii4DI40OvZz2-32PN60DvHJsONSerZ-xQmjYXmXHyqkJJq2KjQIzMGkG03DpNR6FkmccU7Mn8/5khsflkstq0hhzv/Crito+Mustahil-Guyon+Waton.mp3">Crito Mustahil-Guyon Waton</a></p>
+  </div>
+
+  <div class="thumbnail">
+    <img src="images/nemenxginio.png" alt="">
+    <p><a href="https://download1326.mediafire.com/d36fxvuyuhlgVREiZXES98qoyE5nlrOAni4SqN2UCT7W9UJH0x0qDxZvcXZtB-Ns56GkBtvXsVCG8Qgd4r6IGxkMEBV0V30fFvgitPpYop5E3JZZ2X5aISvWOeHbF-iaNZ4B3M2k8HFkPaLCLOBTv6Ce4sAxpK-AV2rV4xOy4ZAu/pgha8jg5n8797iy/Nemen+X+Ginio-Gilga+feat+Woro+Widowati.mp3">Nemen X Ginio-Gilga feat Woro Widowati</a></p>
+  </div>
+
+  <div class="thumbnail">
+    <img src="images/saktenane.png" alt="">
+    <p><a href="https://download1479.mediafire.com/s12i3jkl9rhgGaG8crSZj1RmwqyJGXtDYg5DhzT_LzwUkLuRjf_cGLUQc4ATsyFLiEee2kVEooM9_rA0NTrkgmVqSV2_wMdVgIgBZ_Fge3vlU4MRZdIoLOSBg1i8_v6B6lzCQn-heJMHOyr-Ce0Rchn7T-VPi-gR-EkGTfVIWyXW/geg8q1ymi8i8peb/Saktenane+%28feat.+Destya+Eka%29.mp3">Saktenane (feat. Destya Eka)</a></p>
+  </div>
+  
+  <div class="thumbnail">
+    <img src="images/ngertenono.png" alt="">
+    <p><a href="">Ngertenono Ati NDX AKA</a></p>
+  </div>
+  
+  <div class="thumbnail">
+    <img src="images/tega.png" alt="">
+    <p><a href="">Tega Tiara Andini</a></p>
+  </div>
+  
+  <div class="thumbnail">
+    <img src="images/sewateskonco.png" alt="">
+    <p><a href="">Sewates Konco Lavora</a></p>
+  </div>
+  
+  <div class="thumbnail">
+    <img src="images/usai.png" alt="">
+    <p><a href="">Usai Tiara Andini</a></p>
+  </div>
+  
+  <div class="thumbnail">
+    <img src="images/sanes.png" alt="">
+    <p><a href="">Sanes Guyon Waton feat Denny Caknan</a></p>
+  </div>
+  
+  <div class="thumbnail">
+    <img src="images/pupus.png" alt="">
+    <p><a href="">Pupus Dewa 19 cover Hanin Dhiya</a></p>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "block"; // Tampilkan popup saat halaman dimuat
+});
+
+function closePopup() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "none"; // Sembunyikan popup saat tombol "X" diklik
+
+    // Mengembalikan overflow ke "auto" pada tubuh dokumen saat popup ditutup
+    document.body.style.overflow = "auto";
+}
+
+function openPopup() {
+    const popup = document.getElementById("popup");
+    popup.style.display = "block"; // Menampilkan popup
+
+    // Mengunci overflow pada tubuh dokumen saat popup muncul
+    document.body.style.overflow = "hidden";
+}
+
+
+function showInfoPopup() {
+    const popup = document.getElementById("info-popup");
+    popup.style.display = "block"; // Tampilkan popup saat ikon "info" diklik
+}
+
+function closeInfoPopup() {
+    const popup = document.getElementById("info-popup");
+    popup.style.display = "none"; // Sembunyikan popup saat tombol "X" diklik
+}
+
+function showAd() {
+    const adContainer = document.getElementById("ad-container");
+    adContainer.style.display = "block"; // Menampilkan iklan
+
+    // Mengatur interval untuk menampilkan iklan setiap 30 detik (30000 milidetik)
+    setInterval(function() {
+        adContainer.style.display = "block";
+    }, 30000);
+}
+
+// Panggil fungsi showAd() pertama kali setelah 1 menit (60.000 milidetik) saat halaman dimuat
+setTimeout(showAd, 60000);
+
+// Fungsi untuk menyembunyikan iklan
+function closeAd() {
+    const adContainer = document.getElementById("ad-container");
+    adContainer.style.display = "none"; // Sembunyikan iklan saat tombol "X" diklik
+}
+
+function updateClock() {
+  const clockElement = document.getElementById("clock");
+  const currentTime = new Date();
+  const hours = currentTime.getHours().toString().padStart(2, "0");
+  const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+  const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  clockElement.textContent = timeString;
+}
+
+// Panggil fungsi updateClock setiap detik (1000 milidetik)
+setInterval(updateClock, 1000);
+
+// Panggil fungsi updateClock untuk menampilkan waktu saat halaman dimuat
+updateClock();
+
+const audio = document.getElementById("audio");
+const playPauseButton = document.getElementById("play-pause-button");
+const playPauseIcon = document.getElementById("play-pause-icon");
+
+function togglePlayPause() {
+    if (audio.paused) {
+        audio.play();
+        playPauseIcon.classList.remove("fa-play");
+        playPauseIcon.classList.add("fa-pause");
+    } else {
+        audio.pause();
+        playPauseIcon.classList.remove("fa-pause");
+        playPauseIcon.classList.add("fa-play");
+    }
+}
+
+function arahkanKeHalamanLain() {
+    window.location.href = 'sosmed.html';
+}
+function arahkanKeHalamanClock() {
+  window.location.href = 'clock.html'
+}
+</script>
+</body>
+</html>
