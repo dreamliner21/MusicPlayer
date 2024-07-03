@@ -1,10 +1,40 @@
-# Music-Player with JavaScript
+# Music Player with JavaScript
 
-Function
-1) Random Song
-2) Previous Song
-3) Next Song
-4) Repeat Song
+## Functionality
+- **Random Song:** Plays a random song from the playlist.
+- **Previous Song:** Plays the previous song in the playlist.
+- **Next Song:** Plays the next song in the playlist.
+- **Repeat Song:** Repeats the current song.
 
-The Layout Design of Music Player
-![Screenshot 2023-02-01 110931](https://user-images.githubusercontent.com/86345777/215935830-07cfc994-c4f7-421c-91c5-f2ad7a0d42d4.png)
+## Layout Design
+![Music Player Layout](https://raw.githubusercontent.com/dreamliner21/MusicPlayer/master/images/bubrah.png)
+
+## How to Use
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/dreamliner21/MusicPlayer.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd MusicPlayer
+    ```
+3. Open `index.html` in your web browser to start the music player.
+
+## Example Code
+Here is an example of how to initialize and use the music player:
+
+```javascript
+// Initialize the music player
+const musicPlayer = new MusicPlayer();
+
+// Play a random song
+musicPlayer.playRandom();
+
+// Play the previous song
+musicPlayer.playPrevious();
+
+// Play the next song
+musicPlayer.playNext();
+
+// Repeat the current song
+musicPlayer.repeatCurrent();
